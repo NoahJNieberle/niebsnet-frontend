@@ -1,0 +1,152 @@
+@if (project) {
+  <div class="project-detail-container">
+    <header class="project-header">
+      <div class="header-content">
+        <a routerLink="/projects" class="back-link">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Projects
+        </a>
+        
+        <div class="title-section">
+          <h1>{{ project.title }}</h1>
+          @if (project.status) {
+            <span 
+              class="status-badge"
+              [ngClass]="{
+                'live': project.status === 'live',
+                'wip': project.status === 'wip',
+                'archived': project.status === 'archived'
+              }"
+            >
+              {{ getStatusLabel(project.status) }}
+            </span>
+          }
+        </div>
+        
+        <p class="project-subtitle">{{ project.description }}</p>
+        
+        @if (project.links?.length) {
+          <div class="header-actions">
+            <a
+              [href]="project.links![0].href"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="external-link"
+            >
+              {{ project.links![0].label }}
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        }
+      </div>
+      
+      <div class="project-image">
+        <img [src]="project.image" [alt]="project.title" />
+      </div>
+    </header>
+
+    <main class="project-content">
+      <section class="tech-section">
+        <h2>Technologies</h2>
+        <div class="tech-list">
+          @for (tech of project.tech; track tech) {
+            <span class="tech-badge">{{ tech }}</span>
+          }
+        </div>
+      </section>
+
+      @if (project.longDescription) {
+        <section class="description-section">
+          <h2>Overview</h2>
+          <p>{{ project.longDescription }}</p>
+        </section>
+      }
+
+      @if (project.features && project.features.length > 0) {
+        <section class="features-section">
+          <h2>Key Features</h2>
+          <ul class="features-list">
+            @for (feature of project.features; track feature) {
+              <li>
+                <span class="feature-icon">▹</span>
+                <span>{{ feature }}</span>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+
+      @if (project.challenges && project.challenges.length > 0) {
+        <section class="challenges-section">
+          <h2>Challenges & Solutions</h2>
+          <ul class="challenges-list">
+            @for (challenge of project.challenges; track challenge) {
+              <li>
+                <span class="challenge-icon">⚡</span>
+                <span>{{ challenge }}</span>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+
+      @if (project.outcomes && project.outcomes.length > 0) {
+        <section class="outcomes-section">
+          <h2>Outcomes & Impact</h2>
+          <ul class="outcomes-list">
+            @for (outcome of project.outcomes; track outcome) {
+              <li>
+                <span class="outcome-icon">✓</span>
+                <span>{{ outcome }}</span>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+
+      @if (project.report) {
+        <section class="report-section">
+          <div class="report-heading">
+            <div>
+              <h2>{{ project.report.title }}</h2>
+              <p>{{ project.report.description }}</p>
+            </div>
+
+            @if (project.report.downloadHref) {
+              <a
+                [href]="project.report.downloadHref"
+                class="external-link"
+                download
+              >
+                Download Report
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v12m0 0l4-4m-4 4l-4-4M4 21h16" />
+                </svg>
+              </a>
+            }
+          </div>
+
+          <div class="report-viewer" aria-label="Embedded project report">
+            @for (page of project.report.pages; track page.src; let pageIndex = $index) {
+              <figure class="report-page">
+                <img [src]="page.src" [alt]="page.alt" loading="lazy" />
+                <figcaption>Page {{ pageIndex + 1 }}</figcaption>
+              </figure>
+            }
+          </div>
+        </section>
+      }
+    </main>
+  </div>
+} @else {
+  <div class="not-found">
+    <h1>Project Not Found</h1>
+    <p>The project you're looking for doesn't exist.</p>
+    <a routerLink="/projects" class="back-link">Back to Projects</a>
+  </div>
+}
+

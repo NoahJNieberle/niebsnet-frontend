@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="header">
+    <div class="back-link">
+      <a routerLink="/">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to home
+      </a>
+    </div>
+    
+    <h1>
+      <span>All</span> Projects
+    </h1>
+    <p>
+      A comprehensive collection of my work, including web applications, mobile apps, and other creative projects.
+    </p>
+  </div>
+  
+  <div class="projects-list">
+    @for (project of projects; track project.title) {
+      <app-project-card [project]="project"></app-project-card>
+    }
+  </div>
+</div>

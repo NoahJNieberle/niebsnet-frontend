@@ -1,0 +1,176 @@
+article {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #1e293b;
+  background-color: rgba(30, 41, 59, 0.5);
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  article {
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+article:hover {
+  border-color: rgba(100, 255, 218, 0.5);
+  background-color: rgba(30, 41, 59, 0.7);
+  box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+  transform: translateY(-4px);
+}
+
+article .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  order: 2;
+}
+
+@media (min-width: 768px) {
+  article .content {
+    order: 1;
+  }
+}
+
+article .content > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+article .content h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  article .content h3 {
+    font-size: 1.5rem;
+  }
+}
+
+article:hover .content h3 {
+  color: #64ffda;
+}
+
+article .content h3 a {
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+}
+
+article .content h3 a svg {
+  display: inline-block;
+  margin-left: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+article:hover .content h3 a svg {
+  opacity: 1;
+}
+
+article .content .status-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+article .content .status-badge.live {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+
+article .content .status-badge.wip {
+  background-color: rgba(234, 179, 8, 0.2);
+  color: #facc15;
+}
+
+article .content .status-badge.archived {
+  background-color: rgba(107, 114, 128, 0.2);
+  color: #9ca3af;
+}
+
+article .content p {
+  color: #94a3b8;
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+article .content ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+article .content ul li span {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background-color: rgba(51, 65, 85, 0.5);
+  color: #cbd5e1;
+  border: 1px solid rgba(71, 85, 105, 0.5);
+}
+
+article .image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  transition: border-color 0.2s ease;
+  order: 1;
+}
+
+@media (min-width: 768px) {
+  article .image-wrapper {
+    order: 2;
+  }
+}
+
+article:hover .image-wrapper {
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+article .image-wrapper a {
+  display: block;
+  aspect-ratio: 16 / 9;
+}
+
+article .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+article:hover .image-wrapper img {
+  transform: scale(1.05);
+}
+
+article .image-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(100, 255, 218, 0);
+  transition: background-color 0.2s ease;
+}
+
+article:hover .image-wrapper::after {
+  background-color: rgba(100, 255, 218, 0.1);
+}

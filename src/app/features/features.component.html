@@ -1,0 +1,18 @@
+<div class="features-container">
+  <header class="features-header">
+    <h1>Features</h1>
+  </header>
+
+  <main class="features-content">
+    <section class="features-grid">
+      @for (feature of features; track feature.title) {
+        <div class="feature-card">
+          <div class="feature-icon">{{ feature.icon }}</div>
+          <h2>{{ feature.title }}</h2>
+          <p>{{ feature.description }}</p>
+        </div>
+      }
+    </section>
+  </main>
+</div>
+

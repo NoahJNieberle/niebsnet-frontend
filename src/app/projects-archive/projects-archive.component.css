@@ -1,0 +1,72 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  :host {
+    padding: 6rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :host {
+    padding: 6rem 2rem;
+  }
+}
+
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.back-link {
+  margin-bottom: 3rem;
+}
+
+.back-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+.back-link a:hover {
+  color: #64ffda;
+}
+
+.back-link a svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .header h1 {
+    font-size: 3rem;
+  }
+}
+
+.header h1 span {
+  color: #64ffda;
+}
+
+.header p {
+  color: #94a3b8;
+  font-size: 1.125rem;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 3rem;
+}

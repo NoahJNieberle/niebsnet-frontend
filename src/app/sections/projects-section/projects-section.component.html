@@ -1,0 +1,22 @@
+<section id="projects">
+  <div>
+    <h2>
+      <span>03.</span> Featured Projects
+    </h2>
+    
+    <div class="projects-list">
+      @for (project of sortedProjects; track project.title) {
+        <app-project-card [project]="project"></app-project-card>
+      }
+    </div>
+    
+    <div class="archive-link">
+      <a routerLink="/projects">
+        View full project archive
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

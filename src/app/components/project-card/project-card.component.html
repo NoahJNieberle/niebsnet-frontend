@@ -1,0 +1,60 @@
+<article>
+  <!-- Content -->
+  <div class="content">
+    <div>
+      <div>
+        <h3>
+          <a 
+            [routerLink]="['/projects', project.slug]"
+            class="link-accent"
+          >
+            {{ project.title }}
+            <svg 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </h3>
+        @if (project.status) {
+          <span 
+            class="status-badge"
+            [ngClass]="{
+              'live': project.status === 'live',
+              'wip': project.status === 'wip',
+              'archived': project.status === 'archived'
+            }"
+          >
+            {{ project.status === 'live' ? 'Live' : project.status === 'wip' ? 'In Progress' : 'Archived' }}
+          </span>
+        }
+      </div>
+      
+      <p>
+        {{ project.description }}
+      </p>
+      
+      <ul>
+        @for (tech of project.tech; track tech) {
+          <li>
+            <span>{{ tech }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Image -->
+  <div class="image-wrapper">
+    <a 
+      [routerLink]="['/projects', project.slug]"
+    >
+      <img 
+        [src]="project.image" 
+        [alt]="project.title"
+      />
+    </a>
+  </div>
+</article>

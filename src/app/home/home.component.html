@@ -1,0 +1,87 @@
+<section id="about">
+  <div>
+    <h2>
+      <span>{{ data.about.sectionNumber }}</span> {{ data.about.title }}
+    </h2>
+    <div>
+      <div class="text-content">
+        @for (paragraph of data.about.paragraphs; track paragraph) {
+          <p>{{ paragraph }}</p>
+        }
+        <ul>
+          @for (tech of data.about.technologies; track tech) {
+            <li>
+              <span>▹</span> {{ tech }}
+            </li>
+          }
+        </ul>
+      </div>
+      <div class="image-wrapper">
+        <div class="image-container">
+          <div class="image-border">
+            @if (data.about.imagePath) {
+              <img 
+                [src]="'/' + data.about.imagePath" 
+                [alt]="data.about.imagePlaceholder"
+                class="about-image"
+              />
+            } @else {
+              <div class="image-placeholder">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <p>{{ data.about.imagePlaceholder }}</p>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div>
+    <h2>
+      <span>{{ data.experience.sectionNumber }}</span> {{ data.experience.title }}
+    </h2>
+    
+    <div class="experience-list">
+      @for (exp of data.experience.experiences; track exp.title) {
+        <div class="experience-item" [class.inactive]="!exp.isActive">
+          <div class="experience-header">
+            <h3>
+              {{ exp.title }}
+              <span> @ {{ exp.company }}</span>
+            </h3>
+            <span class="date">{{ exp.date }}</span>
+          </div>
+          <ul class="experience-details">
+            @for (responsibility of exp.responsibilities; track responsibility) {
+              <li>
+                <span>▹</span>
+                <span>{{ responsibility }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<app-projects-section></app-projects-section>
+
+<section id="contact">
+  <div>
+    <span class="section-label">{{ data.contact.sectionLabel }}</span>
+    <h2>{{ data.contact.title }}</h2>
+    <p>
+      {{ data.contact.description }}
+    </p>
+    
+    <a [href]="'mailto:' + data.contact.email">
+      {{ data.contact.buttonText }}
+    </a>
+  </div>
+</section>
