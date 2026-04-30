@@ -106,7 +106,7 @@ export const homeData: HomeData = {
     sectionLabel: '03. What’s Next?',
     title: 'Get In Touch',
     description:
-      'I’m always open to discussing software engineering, data science, mobile development, or new opportunities. Feel free to reach out.',
+      'If you’d like to talk about machine learning, software engineering, or anything tech, feel free to reach out.',
     email: 'noahjnieberle@gmail.com',
     buttonText: 'Say Hello'
   }

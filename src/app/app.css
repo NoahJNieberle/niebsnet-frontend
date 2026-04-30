@@ -43,10 +43,19 @@ nav > div > div {
 }
 
 nav a.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
   font-size: 1.25rem;
   font-weight: 700;
   color: #ffffff;
   transition: color 0.2s ease;
+}
+
+nav a.logo img {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
 }
 
 nav a.logo:hover {

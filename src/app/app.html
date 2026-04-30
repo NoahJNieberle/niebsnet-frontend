@@ -2,7 +2,10 @@
   <nav>
     <div>
       <div>
-        <a routerLink="/" class="logo">NiebsNet</a>
+        <a routerLink="/" class="logo">
+          <img src="niebsnet-logo.svg" alt="" aria-hidden="true" />
+          <span>NiebsNet</span>
+        </a>
         <ul class="desktop-nav">
           @for (item of navItems; track item.sectionId) {
             <li>
