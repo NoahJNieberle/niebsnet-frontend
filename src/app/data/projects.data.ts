@@ -27,7 +27,7 @@ const plantBotReportPages = Array.from({ length: 11 }, (_, index) => {
   const pageNumber = index + 1;
 
   return {
-    src: `/reports/plantbot-phase3/page-${pageNumber}.jpg`,
+    src: `reports/plantbot-phase3/page-${pageNumber}.jpg`,
     alt: `PlantBot Phase III report page ${pageNumber}`
   };
 });
@@ -45,7 +45,7 @@ export const projects: Project[] = [
       'Android',
       'REST APIs'
     ],
-    image: '/nmlogo.jpg',
+    image: 'nmlogo.jpg',
     highlight: true,
     status: 'archived',
     role: 'Mobile App Engineer I',
@@ -121,7 +121,7 @@ export const projects: Project[] = [
       'Express.js',
       'Socket.io'
     ],
-    image: '/projects/esp32-plant.jpg',
+    image: 'projects/plantbot-prototype.png',
     status: 'wip',
     role: 'Embedded / Full-Stack Developer',
     timeframe: '2024 – Present',
@@ -147,7 +147,7 @@ export const projects: Project[] = [
       title: 'PlantBot Phase III Project Report',
       description:
         'Combined research and implementation report for the mobile-friendly remote plant monitoring and watering prototype.',
-      downloadHref: '/reports/plantbot-phase3/plantbot-phase3-report.docx',
+      downloadHref: 'reports/plantbot-phase3/plantbot-phase3-report.docx',
       pages: plantBotReportPages
     }
   },

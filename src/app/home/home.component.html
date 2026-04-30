@@ -20,8 +20,8 @@
         <div class="image-container">
           <div class="image-border">
             @if (data.about.imagePath) {
-              <img 
-                [src]="'/' + data.about.imagePath" 
+              <img
+                [src]="data.about.imagePath"
                 [alt]="data.about.imagePlaceholder"
                 class="about-image"
               />
