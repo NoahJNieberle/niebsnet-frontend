@@ -36,6 +36,7 @@ jobs:
       - name: Configure PostHog analytics
         env:
           POSTHOG_PROJECT_TOKEN: ${{ secrets.POSTHOG_PROJECT_TOKEN }}
+          POSTHOG_API_HOST: ${{ vars.POSTHOG_API_HOST || secrets.POSTHOG_API_HOST }}
         run: node scripts/configure-posthog-token.mjs
 
       - name: Build Angular app

@@ -31,4 +31,6 @@ Tracked events include page views, project-card clicks, contact clicks, outbound
 
 For GitHub Pages, do not commit the PostHog token. Add it as a repository secret named `POSTHOG_PROJECT_TOKEN`; the deploy workflow injects it during the build. The token is still visible in the built browser JavaScript, which is expected for frontend analytics project tokens.
 
+The default PostHog ingest host is `https://us.i.posthog.com`. If the PostHog project lives in another cloud region, set a repository variable or secret named `POSTHOG_API_HOST` to that project's ingest host before deploying.
+
 See `docs/analytics-events.md` for the current event taxonomy.
