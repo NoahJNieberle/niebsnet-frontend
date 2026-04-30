@@ -107,7 +107,7 @@ export const homeData: HomeData = {
     title: 'Get In Touch',
     description:
       'I’m always open to discussing software engineering, data science, mobile development, or new opportunities. Feel free to reach out.',
-    email: 'noahnieberle@gmail.com',
+    email: 'noahjnieberle@gmail.com',
     buttonText: 'Say Hello'
   }
 };
