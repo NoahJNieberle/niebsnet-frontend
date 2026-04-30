@@ -49,6 +49,11 @@ export class App {
 
   toggleMobileNav(): void {
     this.isMobileNavOpen = !this.isMobileNavOpen;
+    this.analytics.captureMobileNavToggle(this.isMobileNavOpen);
+  }
+
+  trackLogoClick(): void {
+    this.analytics.captureLogoClick();
   }
 
   private scrollElementIntoView(sectionId: string): void {

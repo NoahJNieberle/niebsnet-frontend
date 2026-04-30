@@ -18,14 +18,20 @@ import { AnalyticsService } from '../../analytics/analytics.service';
 /** Reusable project summary card used by both the home page and archive page. */
 export class ProjectCardComponent {
   @Input({ required: true }) project!: Project;
+  @Input() analyticsSource = 'project_card';
 
   protected readonly getProjectStatusClass = getProjectStatusClass;
   protected readonly getProjectStatusLabel = getProjectStatusLabel;
 
   private readonly analytics = inject(AnalyticsService);
 
-  trackProjectClick(source: string): void {
-    this.analytics.captureProjectClick(this.project.slug, this.project.title, source);
+  trackProjectClick(interaction: string): void {
+    this.analytics.captureProjectClick(
+      this.project.slug,
+      this.project.title,
+      this.analyticsSource,
+      interaction
+    );
   }
 }
 

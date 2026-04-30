@@ -30,3 +30,5 @@ PostHog support is wired through `src/app/analytics`. Tracking remains disabled 
 Tracked events include page views, project-card clicks, contact clicks, outbound project links, report downloads, project detail views, and Angular error-handler exceptions. Session replay is sampled at 5% and masks all form inputs.
 
 For GitHub Pages, do not commit the PostHog token. Add it as a repository secret named `POSTHOG_PROJECT_TOKEN`; the deploy workflow injects it during the build. The token is still visible in the built browser JavaScript, which is expected for frontend analytics project tokens.
+
+See `docs/analytics-events.md` for the current event taxonomy.

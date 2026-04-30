@@ -6,12 +6,18 @@
     
     <div class="projects-list">
       @for (project of projects; track project.slug) {
-        <app-project-card [project]="project"></app-project-card>
+        <app-project-card
+          [project]="project"
+          analyticsSource="home_featured_projects"
+        ></app-project-card>
       }
     </div>
     
     <div class="archive-link">
-      <a routerLink="/projects">
+      <a
+        routerLink="/projects"
+        (click)="trackArchiveClick()"
+      >
         View full project archive
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

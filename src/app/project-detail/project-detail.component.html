@@ -2,7 +2,11 @@
   <div class="project-detail-container">
     <header class="project-header">
       <div class="header-content">
-        <a routerLink="/projects" class="back-link">
+        <a
+          routerLink="/projects"
+          class="back-link"
+          (click)="trackBackClick()"
+        >
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
@@ -48,7 +52,7 @@
     </header>
 
     <main class="project-content">
-      <section class="tech-section">
+      <section id="project-tech" class="tech-section">
         <h2>Technologies</h2>
         <div class="tech-list">
           @for (tech of project.tech; track tech) {
@@ -58,14 +62,14 @@
       </section>
 
       @if (project.longDescription) {
-        <section class="description-section">
+        <section id="project-overview" class="description-section">
           <h2>Overview</h2>
           <p>{{ project.longDescription }}</p>
         </section>
       }
 
       @if (project.features && project.features.length > 0) {
-        <section class="features-section">
+        <section id="project-features" class="features-section">
           <h2>Key Features</h2>
           <ul class="features-list">
             @for (feature of project.features; track feature) {
@@ -79,7 +83,7 @@
       }
 
       @if (project.challenges && project.challenges.length > 0) {
-        <section class="challenges-section">
+        <section id="project-challenges" class="challenges-section">
           <h2>Challenges & Solutions</h2>
           <ul class="challenges-list">
             @for (challenge of project.challenges; track challenge) {
@@ -93,7 +97,7 @@
       }
 
       @if (project.outcomes && project.outcomes.length > 0) {
-        <section class="outcomes-section">
+        <section id="project-outcomes" class="outcomes-section">
           <h2>Outcomes & Impact</h2>
           <ul class="outcomes-list">
             @for (outcome of project.outcomes; track outcome) {
@@ -107,7 +111,7 @@
       }
 
       @if (project.report) {
-        <section class="report-section">
+        <section id="project-report" class="report-section">
           <div class="report-heading">
             <div>
               <h2>{{ project.report.title }}</h2>
