@@ -33,6 +33,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Configure PostHog analytics
+        env:
+          POSTHOG_PROJECT_TOKEN: ${{ secrets.POSTHOG_PROJECT_TOKEN }}
+        run: node scripts/configure-posthog-token.mjs
+
       - name: Build Angular app
         run: npm run build:prod -- --base-href=/${{ github.event.repository.name }}/
 

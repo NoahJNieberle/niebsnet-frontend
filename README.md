@@ -25,6 +25,8 @@ This repository includes a GitHub Actions workflow that builds the Angular app a
 
 ## Analytics
 
-PostHog support is wired through `src/app/analytics`. Tracking remains disabled until `projectToken` is set in `src/app/analytics/posthog.config.ts`.
+PostHog support is wired through `src/app/analytics`. Tracking remains disabled unless a PostHog project token is injected during the build.
 
 Tracked events include page views, project-card clicks, contact clicks, outbound project links, report downloads, project detail views, and Angular error-handler exceptions. Session replay is sampled at 5% and masks all form inputs.
+
+For GitHub Pages, do not commit the PostHog token. Add it as a repository secret named `POSTHOG_PROJECT_TOKEN`; the deploy workflow injects it during the build. The token is still visible in the built browser JavaScript, which is expected for frontend analytics project tokens.
