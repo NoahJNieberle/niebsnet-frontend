@@ -1,3 +1,5 @@
+export type ProjectStatus = 'live' | 'wip' | 'archived';
+
 export interface Project {
   slug: string;
   title: string;
@@ -10,7 +12,7 @@ export interface Project {
   timeframe?: string;
   teamSize?: number;
   highlight?: boolean;
-  status?: 'live' | 'wip' | 'archived';
+  status?: ProjectStatus;
   longDescription?: string;
   features?: string[];
   challenges?: string[];
@@ -22,6 +24,12 @@ export interface Project {
     pages: { src: string; alt: string }[];
   };
 }
+
+export const PROJECT_STATUS_LABELS: Record<ProjectStatus, string> = {
+  live: 'Live',
+  wip: 'In Progress',
+  archived: 'Archived'
+};
 
 const plantBotReportPages = Array.from({ length: 11 }, (_, index) => {
   const pageNumber = index + 1;
@@ -152,3 +160,21 @@ export const projects: Project[] = [
     }
   },
 ];
+
+export const orderedProjects = [...projects].sort((a, b) => {
+  if (a.highlight && !b.highlight) return -1;
+  if (!a.highlight && b.highlight) return 1;
+  return 0;
+});
+
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((project) => project.slug === slug);
+}
+
+export function getProjectStatusLabel(status?: ProjectStatus): string {
+  return status ? PROJECT_STATUS_LABELS[status] : '';
+}
+
+export function getProjectStatusClass(status?: ProjectStatus): ProjectStatus | null {
+  return status ?? null;
+}

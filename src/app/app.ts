@@ -1,34 +1,52 @@
-import { Component } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
-import { ProjectsSectionComponent } from './sections/projects-section/projects-section.component';
-import { CommonModule } from '@angular/common';
+import { scrollElementIntoView } from './shared/scrolling';
+
+interface NavItem {
+  label: string;
+  sectionId: string;
+}
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, CommonModule],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
+/** Application shell that owns global navigation, layout, and routed page outlet. */
 export class App {
-  constructor(private router: Router) {}
+  readonly navItems: NavItem[] = [
+    { label: 'About', sectionId: 'about' },
+    { label: 'Experience', sectionId: 'experience' },
+    { label: 'Projects', sectionId: 'projects' },
+    { label: 'Contact', sectionId: 'contact' }
+  ];
 
-  scrollToSection(sectionId: string, event: Event) {
+  isMobileNavOpen = false;
+
+  private readonly documentRef = inject(DOCUMENT);
+
+  constructor(private readonly router: Router) {}
+
+  scrollToSection(sectionId: string, event: Event): void {
     event.preventDefault();
+    this.isMobileNavOpen = false;
     
     if (this.router.url !== '/') {
       this.router.navigate(['/']).then(() => {
-        setTimeout(() => {
-          const element = document.getElementById(sectionId);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 100);
+        setTimeout(() => this.scrollElementIntoView(sectionId), 100);
       });
     } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      this.scrollElementIntoView(sectionId);
     }
+  }
+
+  toggleMobileNav(): void {
+    this.isMobileNavOpen = !this.isMobileNavOpen;
+  }
+
+  private scrollElementIntoView(sectionId: string): void {
+    scrollElementIntoView(this.documentRef, sectionId);
   }
 }

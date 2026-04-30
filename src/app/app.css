@@ -53,27 +53,52 @@ nav a.logo:hover {
   color: #64ffda;
 }
 
-nav ul {
-  display: none;
-  align-items: center;
-  gap: 2rem;
+.desktop-nav,
+.mobile-nav {
   list-style: none;
 }
 
+.desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
 @media (min-width: 768px) {
-  nav ul {
+  .desktop-nav {
     display: flex;
   }
 }
 
-nav ul a {
+.desktop-nav a,
+.mobile-nav a {
   color: #cbd5e1;
   font-size: 0.875rem;
   transition: color 0.2s ease;
 }
 
-nav ul a:hover {
+.desktop-nav a:hover,
+.mobile-nav a:hover {
   color: #64ffda;
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem 0 1rem;
+  border-top: 1px solid #1e293b;
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .mobile-nav,
+  .mobile-nav.open {
+    display: none;
+  }
 }
 
 nav button {

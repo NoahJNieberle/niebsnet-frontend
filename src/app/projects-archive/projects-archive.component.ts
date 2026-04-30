@@ -10,7 +10,9 @@ import { projects } from '../data/projects.data';
   templateUrl: './projects-archive.component.html',
   styleUrl: './projects-archive.component.css'
 })
+/** Archive route that lists every portfolio project with the shared card component. */
 export class ProjectsArchiveComponent {
-  projects = projects;
+  /** Full project collection displayed without homepage-specific section framing. */
+  protected readonly projects = projects;
 }
 

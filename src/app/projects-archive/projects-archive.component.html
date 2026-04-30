@@ -18,7 +18,7 @@
   </div>
   
   <div class="projects-list">
-    @for (project of projects; track project.title) {
+    @for (project of projects; track project.slug) {
       <app-project-card [project]="project"></app-project-card>
     }
   </div>

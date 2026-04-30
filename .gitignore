@@ -45,6 +45,7 @@ testem.log
 /typings
 __screenshots__/
 output-*.png
+/output/
 
 # Local runtime logs
 *.log

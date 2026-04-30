@@ -1,5 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { Project } from '../../data/projects.data';
+import {
+  getProjectStatusClass,
+  getProjectStatusLabel,
+  Project
+} from '../../data/projects.data';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -10,7 +14,11 @@ import { RouterModule } from '@angular/router';
   templateUrl: './project-card.component.html',
   styleUrl: './project-card.component.css'
 })
+/** Reusable project summary card used by both the home page and archive page. */
 export class ProjectCardComponent {
-  @Input() project!: Project;
+  @Input({ required: true }) project!: Project;
+
+  protected readonly getProjectStatusClass = getProjectStatusClass;
+  protected readonly getProjectStatusLabel = getProjectStatusLabel;
 }
 

@@ -14,28 +14,25 @@
           @if (project.status) {
             <span 
               class="status-badge"
-              [ngClass]="{
-                'live': project.status === 'live',
-                'wip': project.status === 'wip',
-                'archived': project.status === 'archived'
-              }"
+              [ngClass]="getProjectStatusClass(project.status)"
             >
-              {{ getStatusLabel(project.status) }}
+              {{ getProjectStatusLabel(project.status) }}
             </span>
           }
         </div>
         
         <p class="project-subtitle">{{ project.description }}</p>
         
-        @if (project.links?.length) {
+        @if (project.links?.[0]; as primaryLink) {
           <div class="header-actions">
             <a
-              [href]="project.links![0].href"
+              [href]="primaryLink.href"
               target="_blank"
               rel="noopener noreferrer"
+              referrerpolicy="no-referrer"
               class="external-link"
             >
-              {{ project.links![0].label }}
+              {{ primaryLink.label }}
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>

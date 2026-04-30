@@ -5,7 +5,7 @@
     </h2>
     
     <div class="projects-list">
-      @for (project of sortedProjects; track project.title) {
+      @for (project of projects; track project.slug) {
         <app-project-card [project]="project"></app-project-card>
       }
     </div>

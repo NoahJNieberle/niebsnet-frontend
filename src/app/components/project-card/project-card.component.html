@@ -21,13 +21,9 @@
         @if (project.status) {
           <span 
             class="status-badge"
-            [ngClass]="{
-              'live': project.status === 'live',
-              'wip': project.status === 'wip',
-              'archived': project.status === 'archived'
-            }"
+            [ngClass]="getProjectStatusClass(project.status)"
           >
-            {{ project.status === 'live' ? 'Live' : project.status === 'wip' ? 'In Progress' : 'Archived' }}
+            {{ getProjectStatusLabel(project.status) }}
           </span>
         }
       </div>

@@ -1,23 +1,25 @@
-import { Component } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { ProjectsSectionComponent } from '../sections/projects-section/projects-section.component';
-import { CommonModule } from '@angular/common';
 import { homeData } from '../data/home.data';
+import { scrollElementIntoView } from '../shared/scrolling';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProjectsSectionComponent, CommonModule],
+  imports: [ProjectsSectionComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
+/** Homepage composition for about, experience, featured projects, and contact sections. */
 export class HomeComponent {
-  data = homeData;
+  /** Static portfolio content rendered by the homepage sections. */
+  readonly data = homeData;
 
-  scrollToSection(sectionId: string, event: Event) {
+  private readonly documentRef = inject(DOCUMENT);
+
+  scrollToSection(sectionId: string, event: Event): void {
     event.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    scrollElementIntoView(this.documentRef, sectionId);
   }
 }

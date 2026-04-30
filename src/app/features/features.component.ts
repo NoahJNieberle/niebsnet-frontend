@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+interface FeatureItem {
+  title: string;
+  description: string;
+  icon: string;
+}
 
 @Component({
   selector: 'app-features',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './features.component.html',
   styleUrl: './features.component.css'
 })
+/** Standalone feature-card route kept separate from the main portfolio flow. */
 export class FeaturesComponent {
-  features = [
+  /** Static feature cards for the standalone features route. */
+  readonly features: FeatureItem[] = [
     {
       title: 'Feature One',
       description: 'This is the first feature description. It showcases what this feature can do.',

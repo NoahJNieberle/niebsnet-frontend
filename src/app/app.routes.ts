@@ -24,5 +24,9 @@ export const routes: Routes = [
     path: 'features',
     component: FeaturesComponent,
     title: 'Features'
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
