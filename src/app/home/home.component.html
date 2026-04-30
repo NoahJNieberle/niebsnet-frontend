@@ -80,7 +80,10 @@
       {{ data.contact.description }}
     </p>
     
-    <a [href]="'mailto:' + data.contact.email">
+    <a
+      [href]="'mailto:' + data.contact.email"
+      (click)="trackContactClick()"
+    >
       {{ data.contact.buttonText }}
     </a>
   </div>

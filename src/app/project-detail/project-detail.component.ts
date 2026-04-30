@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -8,6 +8,7 @@ import {
   getProjectStatusLabel,
   Project
 } from '../data/projects.data';
+import { AnalyticsService } from '../analytics/analytics.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -20,6 +21,8 @@ import {
 export class ProjectDetailComponent implements OnInit {
   /** Detail view resolved from the route slug; missing slugs return to the archive. */
   project: Project | undefined;
+
+  private readonly analytics = inject(AnalyticsService);
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -37,8 +40,23 @@ export class ProjectDetailComponent implements OnInit {
       
       if (!this.project) {
         void this.router.navigate(['/projects']);
+        return;
       }
+
+      this.analytics.captureProjectDetailView(this.project.slug, this.project.title);
     });
+  }
+
+  trackOutboundLinkClick(label: string, href: string): void {
+    this.analytics.captureOutboundLinkClick(label, href);
+  }
+
+  trackReportDownload(reportTitle: string): void {
+    if (!this.project) {
+      return;
+    }
+
+    this.analytics.captureReportDownload(this.project.slug, reportTitle);
   }
 }
 

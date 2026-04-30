@@ -7,6 +7,7 @@
           <a 
             [routerLink]="['/projects', project.slug]"
             class="link-accent"
+            (click)="trackProjectClick('card_title')"
           >
             {{ project.title }}
             <svg 
@@ -46,6 +47,7 @@
   <div class="image-wrapper">
     <a 
       [routerLink]="['/projects', project.slug]"
+      (click)="trackProjectClick('card_image')"
     >
       <img 
         [src]="project.image" 

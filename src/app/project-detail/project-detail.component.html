@@ -31,6 +31,7 @@
               rel="noopener noreferrer"
               referrerpolicy="no-referrer"
               class="external-link"
+              (click)="trackOutboundLinkClick(primaryLink.label, primaryLink.href)"
             >
               {{ primaryLink.label }}
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,6 +119,7 @@
                 [href]="project.report.downloadHref"
                 class="external-link"
                 download
+                (click)="trackReportDownload(project.report.title)"
               >
                 Download Report
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">

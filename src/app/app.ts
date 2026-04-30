@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
+import { AnalyticsService } from './analytics/analytics.service';
 import { scrollElementIntoView } from './shared/scrolling';
 
 interface NavItem {
@@ -25,13 +26,17 @@ export class App {
 
   isMobileNavOpen = false;
 
+  private readonly analytics = inject(AnalyticsService);
   private readonly documentRef = inject(DOCUMENT);
 
-  constructor(private readonly router: Router) {}
+  constructor(private readonly router: Router) {
+    void this.analytics.initialize();
+  }
 
   scrollToSection(sectionId: string, event: Event): void {
     event.preventDefault();
     this.isMobileNavOpen = false;
+    this.analytics.captureNavigationClick(sectionId);
     
     if (this.router.url !== '/') {
       this.router.navigate(['/']).then(() => {
