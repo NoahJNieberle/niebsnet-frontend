@@ -133,7 +133,7 @@
           <div class="report-viewer" aria-label="Embedded project report">
             @for (page of project.report.pages; track page.src; let pageIndex = $index) {
               <figure class="report-page">
-                <img [src]="page.src" [alt]="page.alt" loading="lazy" />
+                <img [src]="page.src" [alt]="page.alt" />
                 <figcaption>Page {{ pageIndex + 1 }}</figcaption>
               </figure>
             }
